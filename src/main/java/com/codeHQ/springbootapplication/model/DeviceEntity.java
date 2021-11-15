@@ -27,7 +27,7 @@ public class DeviceEntity {
 	private double longitude;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "device", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "deviceId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<DeviceDetailEntity> details;
 
 	public String getDeviceId() {

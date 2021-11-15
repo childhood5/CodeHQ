@@ -66,7 +66,7 @@ public class RegistrationDeviceController {
 	public ResponseEntity<?> getDevice(@Valid Request request, BindingResult result) {
 		try {
 			ValidatorUtil.validateRequest(result);
-			DeviceRequest dto = deviceService.getDeviceByDeviceId(request.getDeviceId());
+			DeviceRequest dto = deviceService.getDeviceByDeviceId(request);;
 			return new ResponseEntity<>(dto, HttpStatus.OK);
 		} catch (Exception e) {
 			ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, e.getLocalizedMessage());

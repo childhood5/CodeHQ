@@ -12,5 +12,5 @@ import com.codeHQ.springbootapplication.model.DeviceEntity;
 public interface DeviceRepository extends CrudRepository<DeviceEntity, String> {
 
 	DeviceEntity findByDeviceId(final String deviceId);
-
+	
 }

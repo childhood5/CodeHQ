@@ -39,5 +39,6 @@ When running locally, you can access the apis at
 -Store a device: POST method: `http://localhost:8080/api/devices/registration`
 
 -Get a device: GET method: `http://localhost:8080/api/devices/{deviceId}`
+	+ Add Parameters: `http://localhost:8080/api/devices/{deviceId}?startDate=2021-11-15&endDate=2021-11-16`
 
 

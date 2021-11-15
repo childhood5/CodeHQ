@@ -41,7 +41,7 @@ public class MapperObject {
 			entity.setUnit(detail.getTemperature().getUnit());
 			entity.setValue(detail.getTemperature().getValue());
 			entity.setTimestamp(new Date());
-			entity.setDevice(deviceEntity);
+			entity.setDeviceId(deviceEntity);
 			details.add(entity);
 		}
 		deviceEntity.setDetails(details);
@@ -70,7 +70,7 @@ public class MapperObject {
 			temperature.setValue(entity.getValue());
 			detail.setHumidity(entity.getHumidity());
 			detail.setTemperature(temperature);
-			detail.setTimestamp(String.valueOf(entity.getTimestamp()));
+			detail.setTimestamp(entity.getTimestamp());
 			listDeviceDetail.add(detail);
 		}
 		deviceRequest.setData(listDeviceDetail);

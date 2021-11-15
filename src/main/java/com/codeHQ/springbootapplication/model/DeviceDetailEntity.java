@@ -36,7 +36,7 @@ public class DeviceDetailEntity {
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "device_id", nullable = false)
-	private DeviceEntity device;
+	private DeviceEntity deviceId;
 
 	public Long getId() {
 		return id;
@@ -78,11 +78,13 @@ public class DeviceDetailEntity {
 		this.timestamp = timestamp;
 	}
 
-	public DeviceEntity getDevice() {
-		return device;
+	public DeviceEntity getDeviceId() {
+		return deviceId;
 	}
 
-	public void setDevice(DeviceEntity device) {
-		this.device = device;
+	public void setDeviceId(DeviceEntity deviceId) {
+		this.deviceId = deviceId;
 	}
+
+	
 }

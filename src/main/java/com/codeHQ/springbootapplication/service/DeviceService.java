@@ -1,6 +1,7 @@
 package com.codeHQ.springbootapplication.service;
 
 import com.codeHQ.springbootapplication.dto.DeviceRequest;
+import com.codeHQ.springbootapplication.dto.Request;
 
 /**
  * Define DeviceService
@@ -10,7 +11,7 @@ import com.codeHQ.springbootapplication.dto.DeviceRequest;
 public interface DeviceService {
 	
 	//Getting a specific record by using the method getDeviceByDeviceId()
-	public DeviceRequest getDeviceByDeviceId(String deviceId);
+	public DeviceRequest getDeviceByDeviceId(Request deviceId);
 	
 	//Saving a specific record by using the method save()
 	public void save(DeviceRequest deviceRequest);

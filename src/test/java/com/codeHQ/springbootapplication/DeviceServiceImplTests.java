@@ -1,7 +1,6 @@
 package com.codeHQ.springbootapplication;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.util.HashSet;
@@ -13,10 +12,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.codeHQ.springbootapplication.dto.DeviceDetail;
 import com.codeHQ.springbootapplication.dto.DeviceRequest;
+import com.codeHQ.springbootapplication.dto.Request;
 import com.codeHQ.springbootapplication.model.DeviceDetailEntity;
 import com.codeHQ.springbootapplication.model.DeviceEntity;
 import com.codeHQ.springbootapplication.repository.DeviceRepository;
@@ -33,24 +34,29 @@ public class DeviceServiceImplTests {
 	private DeviceRepository repository;
 
 	@Mock
-	private DeviceRequest request;
+	private DeviceRequest deviceRequest;
+	
+	@MockBean
+	private Request request;
 	
 	@Test
 	public void testSaveOrUpdate() {
-		deviceService.save(request);
-		verify(request, times(1));
+		deviceService.save(deviceRequest);
+		verify(deviceRequest).getData();
 	}
 	
 	@Test
-	public void testGetDeviceById() {
+	public void testGetDeviceByDeviceId() {
 		DeviceEntity deviceEntity = createDeviceEntity();
 		DeviceDetailEntity deviceDetailEntity = createDeviceDetailEntity();
 		Set<DeviceDetailEntity> set = new HashSet<>();
 		set.add(deviceDetailEntity);
 		deviceEntity.setDetails(set);
 		
+		Mockito.when(request.getDeviceId()).thenReturn("123");
 		Mockito.when(repository.findByDeviceId(Mockito.anyString())).thenReturn(deviceEntity);
-		DeviceRequest dto = deviceService.getDeviceByDeviceId(Mockito.anyString());
+		request.setDeviceId("123");
+		DeviceRequest dto = deviceService.getDeviceByDeviceId(request);
 		DeviceDetail detailDto = dto.getData().get(0);
 		assertEquals(deviceEntity.getDeviceId(), dto.getDeviceId());
 		assertEquals(String.valueOf(deviceEntity.getLatitude()), String.valueOf(dto.getLatitude()));

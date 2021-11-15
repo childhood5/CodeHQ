@@ -1,5 +1,7 @@
 package com.codeHQ.springbootapplication.dto;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
@@ -13,7 +15,7 @@ public class DeviceDetail {
 	private int humidity;
 	
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-	private String timestamp;
+	private Date timestamp;
 	
 	private Temperature temperature;
 
@@ -25,11 +27,11 @@ public class DeviceDetail {
 		this.humidity = humidity;
 	}
 
-	public String getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
 
