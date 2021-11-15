@@ -38,7 +38,7 @@ public class DeviceServiceImpl implements DeviceService {
 	// Getting a specific record by using the method getDeviceByDeviceId()
 	public DeviceRequest getDeviceByDeviceId(Request request) {
 		
-		DeviceEntity  deviceEntity = deviceRepository.findByDeviceId(request.getDeviceId());
+		DeviceEntity deviceEntity = deviceRepository.findByDeviceId(request.getDeviceId());
 		if(StringUtils.isNotBlank(request.getStartDate()) && StringUtils.isNotBlank(request.getEndDate())) {
 			filterDeviceData(deviceEntity, request.getStartDate(), request.getEndDate());
 		}
