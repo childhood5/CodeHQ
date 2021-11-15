@@ -13,6 +13,6 @@ public interface DeviceService {
 	public DeviceRequest getDeviceByDeviceId(String deviceId);
 	
 	//Saving a specific record by using the method save()
-	public void save(DeviceRequest books);
+	public void save(DeviceRequest deviceRequest);
 
 }

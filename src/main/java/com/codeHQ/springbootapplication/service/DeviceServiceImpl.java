@@ -16,22 +16,22 @@ import com.codeHQ.springbootapplication.repository.DeviceRepository;
 @Service
 public class DeviceServiceImpl implements DeviceService {
 
-	private DeviceRepository devicesRepository;
+	private DeviceRepository deviceRepository;
 
 	@Autowired
-	public DeviceServiceImpl(DeviceRepository devicesRepository) {
-		this.devicesRepository = devicesRepository;
+	public DeviceServiceImpl(DeviceRepository deviceRepository) {
+		this.deviceRepository = deviceRepository;
 	}
 
 	// Saving a specific record by using the method save()
 	public void save(DeviceRequest deviceRequest) {
-		devicesRepository.save(new MapperObject().mapperDtoToEntity(deviceRequest));
+		deviceRepository.save(new MapperObject().mapperDtoToEntity(deviceRequest));
 	}
 	
 
 	// Getting a specific record by using the method getDeviceByDeviceId()
 	public DeviceRequest getDeviceByDeviceId(String deviceId) {
-		DeviceEntity  deviceEntity = devicesRepository.findByDeviceId(deviceId);
+		DeviceEntity  deviceEntity = deviceRepository.findByDeviceId(deviceId);
 		return new MapperObject().mapperEntityToDto(deviceEntity, deviceEntity.getDetails());
 	}
 
