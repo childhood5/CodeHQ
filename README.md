@@ -15,7 +15,7 @@ This application is used specifically for codeHQ project.
 **1. Clone the application**
 
 ```bash
-git clone https://bitbucket.org/mmcmason/mmc-microservices-vehicles.git
+git clone https://github.com/childhood5/CodeHQ.git
 ```
 
 
