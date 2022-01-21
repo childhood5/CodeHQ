@@ -1,6 +1,7 @@
 package com.codeHQ.springbootapplication.mapper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +12,8 @@ import com.codeHQ.springbootapplication.dto.DeviceRequest;
 import com.codeHQ.springbootapplication.dto.Temperature;
 import com.codeHQ.springbootapplication.model.DeviceDetailEntity;
 import com.codeHQ.springbootapplication.model.DeviceEntity;
+import com.codeHQ.springbootapplication.model.ManyToManyEntity;
+import com.codeHQ.springbootapplication.model.OneToOneEntity;
 
 /**
  * This is MapperObject class to mapper object
@@ -45,6 +48,17 @@ public class MapperObject {
 			details.add(entity);
 		}
 		deviceEntity.setDetails(details);
+		
+		OneToOneEntity entity = new OneToOneEntity();
+		entity.setData(deviceEntity);
+		deviceEntity.setData(entity);
+		
+		List<ManyToManyEntity> manyEntity =  new ArrayList<>();
+		ManyToManyEntity en = new ManyToManyEntity();
+		en.setManyEntity(Arrays.asList(deviceEntity));
+		manyEntity.add(en);
+		deviceEntity.setManyEntity(manyEntity);
+		
 		return deviceEntity;
 	}
 

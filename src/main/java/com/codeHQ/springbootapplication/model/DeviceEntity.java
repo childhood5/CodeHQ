@@ -1,5 +1,6 @@
 package com.codeHQ.springbootapplication.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -7,7 +8,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,6 +32,14 @@ public class DeviceEntity {
 	@JsonIgnore
 	@OneToMany(mappedBy = "deviceId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<DeviceDetailEntity> details;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy = "data", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private OneToOneEntity data;
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "manyEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<ManyToManyEntity> manyEntity;
 
 	public String getDeviceId() {
 		return deviceId;
@@ -61,4 +72,24 @@ public class DeviceEntity {
 	public void setDetails(Set<DeviceDetailEntity> details) {
 		this.details = details;
 	}
+
+	public OneToOneEntity getData() {
+		return data;
+	}
+
+	public void setData(OneToOneEntity data) {
+		this.data = data;
+	}
+
+	public List<ManyToManyEntity> getManyEntity() {
+		return manyEntity;
+	}
+
+	public void setManyEntity(List<ManyToManyEntity> manyEntity) {
+		this.manyEntity = manyEntity;
+	}
+	
+	
+	
+	
 }
