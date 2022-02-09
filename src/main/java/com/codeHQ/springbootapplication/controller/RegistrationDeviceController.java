@@ -16,6 +16,7 @@ import com.codeHQ.springbootapplication.dto.DeviceRequest;
 import com.codeHQ.springbootapplication.dto.Request;
 import com.codeHQ.springbootapplication.exception.ApiError;
 import com.codeHQ.springbootapplication.service.DeviceService;
+import com.codeHQ.springbootapplication.service.TestService;
 import com.codeHQ.springbootapplication.util.ValidatorUtil;
 
 /**
@@ -30,10 +31,14 @@ import com.codeHQ.springbootapplication.util.ValidatorUtil;
 public class RegistrationDeviceController {
 
 	private DeviceService deviceService;
+	
+	private TestService test;
 
+	
 	@Autowired
-	public RegistrationDeviceController(DeviceService deviceService) {
+	public RegistrationDeviceController(DeviceService deviceService, TestService test) {
 		this.deviceService = deviceService;
+		this.test = test;
 	}
 
 	/**
@@ -66,8 +71,19 @@ public class RegistrationDeviceController {
 	public ResponseEntity<?> getDevice(@Valid Request request, BindingResult result) {
 		try {
 			ValidatorUtil.validateRequest(result);
-			DeviceRequest dto = deviceService.getDeviceByDeviceId(request);;
+			DeviceRequest dto = deviceService.getDeviceByDeviceId(request);
 			return new ResponseEntity<>(dto, HttpStatus.OK);
+		} catch (Exception e) {
+			ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
+			return new ResponseEntity<>(apiError, apiError.getStatus());
+		}
+	}
+	
+	@PostMapping("/test")
+	public ResponseEntity<?> insert(@Valid Request request, BindingResult result) {
+		try {
+			test.save(request);
+			return new ResponseEntity<>(200, HttpStatus.OK);
 		} catch (Exception e) {
 			ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
 			return new ResponseEntity<>(apiError, apiError.getStatus());
