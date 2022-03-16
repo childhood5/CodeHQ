@@ -22,9 +22,9 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven 	
-      run: mvn package  
-    - name: Test with Maven 
+    - name: Build Project 	
+      run: mvn clean install  
+    - name: Unit test
       run: mvn test && mvn package
     - name: Build Jar file
       run: mkdir staging && cp target/*.jar staging  
