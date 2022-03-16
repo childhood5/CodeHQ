@@ -22,14 +22,13 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn clean install
-    - name: Unit test 
+    - name: Build with Maven 	
+      run: mvn package  
+    - name: Test with Maven 
       run: mvn test && mvn package
-    - name: Build Jar File
-      run: mkdir staging && cp target/*.jar staging
-    - name: Build Jar File
+    - name: Build Jar file
+      run: mkdir staging && cp target/*.jar staging  
     - uses: actions/upload-artifact@v1
       with:
-          name: Package
-          package: staging
+        name: Package
+        path: staging
