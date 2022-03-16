@@ -1,4 +1,4 @@
-name: CI to GHCR 
+name: CI/CD
 
 on:
   push:
