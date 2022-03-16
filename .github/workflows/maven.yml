@@ -32,7 +32,7 @@ jobs:
       with:
         name: Package
         path: staging
-    - uses: actions/upload-artifact@v1
+    - name: Deploy
       with:
         local: target/*.jar
         host: https://github.com/
