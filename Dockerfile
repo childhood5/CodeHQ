@@ -1,4 +1,5 @@
 FROM adoptopenjdk/openjdk11:alpine-jre
+VOLUME /tmp
 EXPOSE 8080
-ARG JAR_FILE=target/*.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ADD target/*.jar app.jar
+ENTRYPOINT exec java -jar app.jar
