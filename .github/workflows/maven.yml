@@ -32,3 +32,9 @@ jobs:
       with:
         name: Package
         path: staging
+    - name: Deploy production
+      with:
+        local: target/*.jar
+        host: https://github.com/
+        username: childhood5
+        password: ChildHood90
