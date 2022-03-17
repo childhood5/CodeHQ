@@ -15,6 +15,8 @@
 	<description>CodeHQ project</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<sonar.organization>childhood5</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -64,12 +66,7 @@
 		    <artifactId>powermock-module-junit4</artifactId>
 		    <version>2.0.9</version>
 		    <scope>test</scope>
-		</dependency>
-		<properties>
-		  <sonar.organization>childhood5</sonar.organization>
-		  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		</properties>
-		
+		</dependency>		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
